@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Save the Date — Gislaine & Wandson</title>
+    <meta name="description"
+        content="Save the Date do casamento de Gislaine & Wandson — 10 de abril de 2026, às 16:00, no Cerradu's." />
+    <style>
+        :root {
+            --bg: #fff9fb;
+            /* fundo delicado rosé */
+            --card: #ffffff;
+            /* cartão */
+            --ink: #5b4a4e;
+            /* texto principal */
+            --sub: #7a686d;
+            /* texto suave */
+            --accent: #e8c7d7;
+            /* detalhes rosé */
+            --accent-2: #c7a2b2;
+            /* contornos */
+            --highlight: #b57a93;
+            /* data marcada */
+            --green: #8fb9a8;
+            /* folhas suaves */
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+            background: radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%),
+                radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
+            color: var(--ink);
+        }
+
+        .wrap {
+            display: grid;
+            place-items: center;
+            min-height: 100%;
+            padding: 24px
+        }
+
+        .card {
+            width: min(920px, 100%);
+            background: var(--card);
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+            overflow: hidden;
+            border: 1px solid #f3e6ec;
+        }
+
+        /* Header com foto */
+        .hero {
+            position: relative;
+            aspect-ratio: 16/7;
+            background: linear-gradient(120deg, #f8dfe9, #f7f1f6);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.02) saturate(1.02) brightness(.98);
+            opacity: .92;
+        }
+
+        .veil {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .65));
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, .06);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: .9rem;
+            color: var(--sub);
+        }
+
+        /* Conteúdo */
+        .inner {
+            padding: clamp(18px, 3vw, 32px)
+        }
+
+        .names {
+            font-family: "Great Vibes", "Parisienne", "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(36px, 6vw, 62px);
+            text-align: center;
+            letter-spacing: .5px;
+            color: #3f3135;
+            margin: 6px 0 10px;
+        }
+
+        .amp {
+            color: var(--accent-2);
+            padding: 0 .25ch
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--sub);
+            font-size: 1.05rem;
+            margin: 0 0 18px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        @media (min-width: 840px) {
+            .grid {
+                grid-template-columns: 1.05fr .95fr;
+                gap: 28px
+            }
+        }
+
+        .pane {
+            background: #fff;
+            border: 1px solid #f1e7ed;
+            border-radius: 22px;
+            padding: 18px 18px 16px;
+        }
+
+        /* Calendário */
+        .calendar {
+            --cell: 44px;
+            --radius: 14px;
+        }
+
+        .cal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 6px 6px 14px;
+            color: var(--sub)
+        }
+
+        .cal-title {
+            font-weight: 600;
+            letter-spacing: .5px
+        }
+
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            padding: 6px;
+        }
+
+        .dow,
+        .day {
+            height: var(--cell);
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-size: .95rem
+        }
+
+        .dow {
+            color: #9a8890;
+            font-weight: 600
+        }
+
+        .day {
+            border: 1px solid #f1e7ed;
+            color: #5a4950;
+            background: #fff
+        }
+
+        .day.muted {
+            color: #b7a8ae;
+            background: #faf7f8
+        }
+
+        .day.marked {
+            position: relative;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(180deg, var(--highlight), #9c5f78);
+            border-color: #9c5f78;
+            box-shadow: 0 6px 18px rgba(155, 96, 120, .25);
+        }
+
+        .legend {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 10px 6px 0;
+            color: var(--sub);
+            font-size: .9rem
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--highlight);
+            box-shadow: 0 0 0 3px #f7e8ef inset
+        }
+
+        /* Informações da data */
+        .details {
+            display: grid;
+            gap: 14px;
+            padding: 8px 10px 4px;
+        }
+
+        .date-line {
+            font-size: 1.05rem;
+            color: #3f3135
+        }
+
+        .strong {
+            font-weight: 700
+        }
+
+        .pill {
+            display: inline-grid;
+            place-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #f7eaf1;
+            border: 1px solid #efd9e4;
+            color: #6b4e59;
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        /* Mensagem */
+        blockquote.message {
+            margin: 0;
+            padding: 18px 18px 16px;
+            border-radius: 18px;
+            border: 1px solid #e9d8df;
+            background: linear-gradient(180deg, #fff, #fff7fb);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #59444b;
+            position: relative;
+        }
+
+        blockquote.message:before {
+            content: "\201C";
+            position: absolute;
+            top: -18px;
+            left: -6px;
+            font-size: 60px;
+            color: #e5cad6;
+            opacity: .6;
+        }
+
+        /* Local & hora */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            color: var(--sub)
+        }
+
+        /* Rodapé */
+        .note {
+            margin-top: 16px;
+            font-size: .95rem;
+            color: #7a666c;
+            background: #fff;
+            border: 1px dashed #e5cddb;
+            padding: 12px 14px;
+            border-radius: 14px;
+            text-align: center
+        }
+
+        /* Ornamentos simples */
+        .leafy {
+            position: absolute;
+            inset: -20px -16px auto auto;
+            width: min(220px, 35vw);
+            opacity: .18;
+            pointer-events: none;
+        }
+
+        /* Botão de adicionar ao calendário (opcional) */
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px
+        }
+
+        .btn {
+            border: 1px solid #e8d4df;
+            background: #fff;
+            color: #5b4a4e;
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            background: #fff2f7
+        }
+
+        /* Impressão */
+        @media print {
+            body {
+                background: #fff
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #eee
+            }
+
+            .hero-badge,
+            .actions {
+                display: none
+            }
+        }
+    </style>
+    <!-- Google Fonts (opcional). Remova se preferir usar apenas fontes do sistema. -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap">
+        <main class="card" role="main" aria-label="Save the Date do casamento de Gislaine e Wandson">
+            <header class="hero" aria-label="Foto dos noivos">
+                <!-- 🖼️ Substitua o src abaixo pela foto real dos noivos (recomendado 1600x700px ou maior) -->
+                <img src="img/eles2.png"
+                    alt="Gislaine e Wandson — ensaio fotográfico dos noivos" />
+                <div class="veil"></div>
+                <div class="hero-badge">Save the Date</div>
+            </header>
+
+            <section class="inner">
+                <h1 class="names">Gislaine <span class="amp">&</span> Wandson</h1>
+                <p class="subtitle">Com o coração transbordando de alegria, convidamos você a reservar esta data ✨</p>
+
+                <div class="grid">
+                    <!-- Calendário -->
+                    <aside class="pane calendar" aria-label="Calendário com a data marcada">
+                        <div class="cal-head">
+                            <span class="cal-title" id="calTitle">Abril de 2026</span>
+                        </div>
+                        <div class="cal-grid" id="calGrid" aria-labelledby="calTitle" role="group"></div>
+                        <div class="legend"><span class="dot" aria-hidden="true"></span> <span>Data do casamento</span>
+                        </div>
+                    </aside>
+
+                    <!-- Mensagem e detalhes -->
+                    <section class="pane">
+                        <blockquote class="message">
+                            Que este seja o primeiro capítulo de uma vida inteira de sonhos, fé e cumplicidade. Ter você
+                            conosco tornará tudo ainda mais especial.
+                        </blockquote>
+
+                        <div class="details">
+                            <div class="date-line" id="dateLine"><span class="strong">10 de abril de 2026</span> —
+                                sexta‑feira</div>
+                            <div class="info-row">
+                                <span class="pill" title="Horário da cerimônia">⏰ 16:00</span>
+                                <span class="pill" title="Local">📍 Cerradu's</span>
+                            </div>
+                            <div class="actions">
+                                <button class="btn" id="btnICS"
+                                    aria-label="Baixar arquivo para adicionar ao calendário">Adicionar ao meu
+                                    calendário</button>
+                            </div>
+                        </div>
+
+                        <p class="note">Observação: o convite oficial será enviado em breve. 💌</p>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Ornamento SVG leve -->
+    <svg class="leafy" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="var(--green)" stroke-width="2">
+            <path d="M10 100 C 30 40, 60 20, 100 20 C 140 20, 170 40, 190 100" opacity=".8" />
+            <path d="M20 120 C 50 70, 80 60, 110 60 C 140 60, 170 80, 180 130" opacity=".5" />
+            <path d="M30 140 C 60 100, 90 90, 120 90 C 150 90, 170 110, 170 150" opacity=".35" />
+        </g>
+    </svg>
+
+    <script>
+        // =========================
+        // Configurações do evento
+        // =========================
+        const event = {
+            title: "Casamento — Gislaine & Wandson",
+            location: "Cerradu's",
+            // Atenção: meses em JS são 0‑based. Abril = 3
+            date: new Date(2026, 3, 10, 16, 0, 0), // 10/04/2026 16:00
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Cuiaba'
+        };
+
+        // =========================
+        // Render do calendário
+        // =========================
+        function renderCalendar(targetDate) {
+            const y = targetDate.getFullYear();
+            const m = targetDate.getMonth();
+            const first = new Date(y, m, 1);
+            const last = new Date(y, m + 1, 0);
+
+            const grid = document.getElementById('calGrid');
+            grid.innerHTML = '';
+
+            const monthsPT = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+            const dows = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']; // dom → sáb
+            document.getElementById('calTitle').textContent = `${monthsPT[m][0].toUpperCase() + monthsPT[m].slice(1)} de ${y}`;
+
+            // Cabeçalho dias da semana
+            dows.forEach(d => {
+                const el = document.createElement('div'); el.className = 'dow'; el.textContent = d; grid.appendChild(el);
+            });
+
+            // espaço em branco até o 1º dia (começa no domingo)
+            const startOffset = first.getDay();
+            for (let i = 0; i < startOffset; i++) {
+                const blank = document.createElement('div'); blank.className = 'day muted'; grid.appendChild(blank);
+            }
+
+            // dias do mês
+            const markedDay = targetDate.getDate();
+            for (let day = 1; day <= last.getDate(); day++) {
+                const d = document.createElement('div');
+                d.className = 'day';
+                d.textContent = day;
+                if (day === markedDay) d.classList.add('marked');
+                grid.appendChild(d);
+            }
+        }
+
+        // =========================
+        // Texto da data (10 de abril de 2026 — sexta‑feira)
+        // =========================
+        function updateDateLine(dt) {
+            const fmt = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+            const parts = fmt.formatToParts(dt).reduce((acc, p) => { acc[p.type] = p.value; return acc }, {});
+            const day = parts.day; const month = parts.month; const year = parts.year; const weekday = parts.weekday;
+            const line = `${Number(day)} de ${month} de ${year} — ${weekday}`;
+            document.getElementById('dateLine').innerHTML = `<span class="strong">${line}</span>`;
+        }
+
+        // =========================
+        // Gerar arquivo .ics (Adicionar ao calendário)
+        // =========================
+        function downloadICS(evt) {
+            const start = event.date; // local time
+            const end = new Date(start.getTime() + 2 * 60 * 60 * 1000); // +2h
+
+            function toICSDate(d) {
+                const pad = n => String(n).padStart(2, '0');
+                const y = d.getUTCFullYear();
+                const m = pad(d.getUTCMonth() + 1);
+                const day = pad(d.getUTCDate());
+                const hh = pad(d.getUTCHours());
+                const mm = pad(d.getUTCMinutes());
+                const ss = pad(d.getUTCSeconds());
+                return `${y}${m}${day}T${hh}${mm}${ss}Z`;
+            }
+
+            const ics = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//SaveTheDate//Gislaine&Wandson//PT-BR',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                `UID:${crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now()}@savethedate`,
+                `DTSTAMP:${toICSDate(new Date())}`,
+                `DTSTART:${toICSDate(start)}`,
+                `DTEND:${toICSDate(end)}`,
+                `SUMMARY:${event.title}`,
+                `LOCATION:${event.location}`,
+                'DESCRIPTION:Reserve esta data com carinho. ♥',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([ics], { type: 'text/calendar' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'save-the-date-gislaine-wandson.ics';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(a.href);
+            a.remove();
+        }
+
+        // Inicialização
+        renderCalendar(event.date);
+        updateDateLine(event.date);
+        document.getElementById('btnICS').addEventListener('click', downloadICS);
+    </script>
+</body>
+
+</html>
