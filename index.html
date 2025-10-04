@@ -34,7 +34,9 @@
             margin: 0;
             font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
             color: var(--ink);
-            background: radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%), radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
+            background:
+                radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%),
+                radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
         }
 
         .wrap {
@@ -51,7 +53,7 @@
             border: 1px solid #f3e6ec;
             box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
             overflow: hidden;
-            position: relative
+            position: relative;
         }
 
         /* ===== Header ===== */
@@ -61,7 +63,7 @@
             background: linear-gradient(120deg, #f8dfe9, #f7f1f6);
             display: grid;
             place-items: center;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .hero img {
@@ -90,12 +92,13 @@
         /* ===== Título animado ===== */
         .script {
             position: absolute;
-            inset: auto 0 8% 0;
+            inset: auto 0 7% 0;
+            /* centralizado e um pouco acima da base */
             margin: auto;
             width: min(92%, 820px);
             height: auto;
             z-index: 4;
-            pointer-events: none
+            pointer-events: none;
         }
 
         .script text {
@@ -110,7 +113,8 @@
             stroke-dasharray: var(--dash, 1400);
             stroke-dashoffset: var(--dash, 1400);
             animation: draw 8s ease forwards, fillIn 1.5s ease 8s forwards;
-            font-size: 200px;
+            /* Responsivo: grande mas sem vazar */
+            font-size: clamp(96px, 15vw, 170px);
             text-rendering: optimizeLegibility;
         }
 
@@ -138,7 +142,7 @@
             border-radius: 50%;
             opacity: .95;
             filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .2));
-            animation: fall 2.2s ease-in forwards
+            animation: fall 2.2s ease-in forwards;
         }
 
         .particle::before {
@@ -146,7 +150,7 @@
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: radial-gradient(circle at 30% 30%, #FFF6C7, #F6E27A 35%, #CFAF6E 70%, #9E793F 100%)
+            background: radial-gradient(circle at 30% 30%, #FFF6C7, #F6E27A 35%, #CFAF6E 70%, #9E793F 100%);
         }
 
         @keyframes fall {
@@ -176,7 +180,7 @@
             text-align: center;
             letter-spacing: .5px;
             color: #3f3135;
-            margin: 6px 0 10px
+            margin: 6px 0 10px;
         }
 
         .amp {
@@ -297,9 +301,10 @@
             font-size: 1.05rem;
             line-height: 1.6;
             color: #59444b;
-            position: relative
+            position: relative;
         }
 
+        /* remove a “marquinha” de aspa */
         blockquote.message::before {
             content: none
         }
@@ -336,7 +341,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: .25s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .04)
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .04);
         }
 
         .btn:hover {
@@ -412,16 +417,16 @@
                 padding: 14px
             }
 
-            /* Título grande no mobile */
+            /* Título grande, porém controlado no mobile */
             .script {
+                inset: auto 0 7% 0;
                 width: 100%;
-                inset: auto 0 6% 0;
-                transform: scale(1.35);
+                transform: none;
                 transform-origin: center bottom
             }
 
             .script text {
-                font-size: 240px
+                font-size: clamp(96px, 22vw, 150px)
             }
         }
 
@@ -447,10 +452,12 @@
     <div class="wrap">
         <main class="card" role="main" aria-label="Save the Date do casamento de Gislaine e Wandson">
             <header class="hero" aria-label="Foto dos noivos">
+                <!-- Substitua pelo arquivo real -->
                 <img src="img/eles2.png" alt="Gislaine e Wandson — ensaio fotográfico dos noivos" />
                 <div class="veil"></div>
                 <div class="sparkles" aria-hidden="true"></div>
-                <!-- Título "Save the Date" -->
+
+                <!-- SVG animado: escrita dourada -->
                 <svg class="script" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                     <defs>
                         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -492,8 +499,9 @@
                             e cumplicidade. Ter você conosco tornará tudo ainda mais especial.</blockquote>
                         <div class="details">
                             <div class="date-line" id="dateLine"><span class="strong">10 de abril de 2026</span> —
-                                sexta‑feira</div>
-                            <div class="actions"><button class="btn btn-primary" id="btnICS"
+                                sexta-feira</div>
+                            <div class="actions">
+                                <button class="btn btn-primary" id="btnICS"
                                     aria-label="Salvar evento no seu calendário">📅 Salvar no meu calendário</button>
                             </div>
                         </div>
@@ -529,8 +537,20 @@
             const monthsPT = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
             const dows = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
             document.getElementById('calTitle').textContent = `${monthsPT[m][0].toUpperCase() + monthsPT[m].slice(1)} de ${y}`;
-            dows.forEach(d => { const el = document.createElement('div'); el.className = 'dow'; el.textContent = d; grid.appendChild(el); });
-            for (let i = 0; i < first.getDay(); i++) { const blank = document.createElement('div'); blank.className = 'day muted'; grid.appendChild(blank); }
+
+            dows.forEach(d => {
+                const el = document.createElement('div');
+                el.className = 'dow';
+                el.textContent = d;
+                grid.appendChild(el);
+            });
+
+            for (let i = 0; i < first.getDay(); i++) {
+                const blank = document.createElement('div');
+                blank.className = 'day muted';
+                grid.appendChild(blank);
+            }
+
             const markedDay = targetDate.getDate();
             for (let day = 1; day <= last.getDate(); day++) {
                 const d = document.createElement('div');
@@ -569,12 +589,12 @@
                 'DESCRIPTION:Reserve esta data com carinho.',
                 'END:VEVENT',
                 'END:VCALENDAR'
-            ].join('\r\n'); // << corrigido
+            ].join('\r\n'); // CRLF
         }
 
         function downloadICS() {
             const start = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
-            const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+            const end = new Date(start.getTime() + 24 * 60 * 60 * 1000); // +1 dia
             const ics = buildICSString(start, end, event.title);
             const blob = new Blob([ics], { type: 'text/calendar' });
             const a = document.createElement('a');
@@ -620,7 +640,7 @@
                 const textRect = textEl.getBoundingClientRect();
                 const layerRect = layer.getBoundingClientRect();
                 const xAbs = textRect.left + textRect.width * (0.06 + 0.88 * progress);
-                const yAbs = textRect.top + textRect.height * 0.62;
+                const yAbs = textRect.top + textRect.height * 0.62; // linha média
                 let x = xAbs - layerRect.left, y = yAbs - layerRect.top;
                 x = Math.max(0, Math.min(layerRect.width - 1, x));
                 y = Math.max(0, Math.min(layerRect.height - 1, y));
@@ -663,7 +683,7 @@
                 const s = new Date(2026, 3, 10), e = new Date(2026, 3, 11);
                 const ics = buildICSString(s, e, 'Teste ICS');
                 console.assert(ics.startsWith('BEGIN:VCALENDAR'), 'ICS start');
-                console.assert(ics.includes('\r\n'), 'ICS CRLF'); // << corrigido
+                console.assert(ics.includes('\r\n'), 'ICS CRLF');
                 console.assert(/DTSTART;VALUE=DATE:20260410/.test(ics), 'DTSTART 20260410');
                 console.assert(/DTEND;VALUE=DATE:20260411/.test(ics), 'DTEND 20260411');
 
@@ -673,8 +693,6 @@
             } catch (e) { console.error('[TEST]', e); }
         })();
     </script>
-
-
 </body>
 
 </html>
