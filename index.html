@@ -4,90 +4,79 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Save the Date — Gislaine & Wandson</title>
-    <meta name="description" content="Save the Date do casamento de Gislaine & Wandson — 10 de abril de 2026." />
+    <title>Save the Date — Gislaine &amp; Wandson</title>
+    <meta name="description" content="Save the Date do casamento de Gislaine &amp; Wandson — 10 de abril de 2026." />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap"
         rel="stylesheet" />
     <style>
         :root {
             --bg: #fff9fb;
-            /* fundo delicado rosé */
             --card: #ffffff;
-            /* cartão */
             --ink: #5b4a4e;
-            /* texto principal */
             --sub: #7a686d;
-            /* texto suave */
             --accent: #e8c7d7;
-            /* detalhes rosé */
             --accent-2: #c7a2b2;
-            /* contornos */
             --highlight: #b57a93;
-            /* data marcada */
             --green: #8fb9a8;
-            /* folhas suaves */
         }
 
         * {
-            box-sizing: border-box;
+            box-sizing: border-box
         }
 
         html,
         body {
             height: 100%;
-            overflow-x: hidden;
-            /* evita rolagem lateral em telas pequenas */
+            overflow-x: hidden
         }
 
         body {
             margin: 0;
             font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-            background:
-                radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%),
-                radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
             color: var(--ink);
+            background: radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%), radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
         }
 
         .wrap {
             display: grid;
             place-items: center;
             min-height: 100%;
-            padding: 24px;
+            padding: 24px
         }
 
         .card {
             width: min(920px, 100%);
             background: var(--card);
             border-radius: 28px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
             border: 1px solid #f3e6ec;
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+            overflow: hidden;
+            position: relative
         }
 
-        /* ===== Header com foto ===== */
+        /* ===== Header ===== */
         .hero {
             position: relative;
             aspect-ratio: 16/7;
             background: linear-gradient(120deg, #f8dfe9, #f7f1f6);
             display: grid;
             place-items: center;
-            overflow: hidden;
+            overflow: hidden
         }
 
         .hero img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: contrast(1.02) saturate(1.02) brightness(0.98);
-            opacity: 0.92;
+            filter: contrast(1.02) saturate(1.02) brightness(.98);
+            opacity: .92
         }
 
         .veil {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.65));
-            z-index: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .65));
+            z-index: 1
         }
 
         .sparkles {
@@ -95,10 +84,10 @@
             inset: 0;
             z-index: 5;
             pointer-events: none;
-            overflow: hidden;
+            overflow: hidden
         }
 
-        /* ===== Título animado "Save the Date" ===== */
+        /* ===== Título animado ===== */
         .script {
             position: absolute;
             inset: auto 0 8% 0;
@@ -106,7 +95,7 @@
             width: min(92%, 820px);
             height: auto;
             z-index: 4;
-            pointer-events: none;
+            pointer-events: none
         }
 
         .script text {
@@ -118,41 +107,38 @@
             stroke-linejoin: round;
             paint-order: stroke fill;
             filter: url(#goldGlow);
-            /* comprimento do traço ajustado via --dash (fallback 1400) */
             stroke-dasharray: var(--dash, 1400);
             stroke-dashoffset: var(--dash, 1400);
-            /* 1) desenha  2) preenche */
             animation: draw 8s ease forwards, fillIn 1.5s ease 8s forwards;
-            /* destaque e responsividade */
-            font-size: clamp(72px, 15vw, 220px);
+            font-size: 200px;
             text-rendering: optimizeLegibility;
         }
 
         @keyframes draw {
             to {
-                stroke-dashoffset: 0;
+                stroke-dashoffset: 0
             }
         }
 
         @keyframes fillIn {
             from {
-                fill-opacity: 0;
+                fill-opacity: 0
             }
 
             to {
-                fill-opacity: 1;
+                fill-opacity: 1
             }
         }
 
-        /* ===== Partículas douradas ===== */
+        /* ===== Partículas ===== */
         .particle {
             position: absolute;
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            opacity: 0.95;
-            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
-            animation: fall 2.2s ease-in forwards;
+            opacity: .95;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .2));
+            animation: fall 2.2s ease-in forwards
         }
 
         .particle::before {
@@ -160,62 +146,62 @@
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: radial-gradient(circle at 30% 30%, #FFF6C7, #F6E27A 35%, #CFAF6E 70%, #9E793F 100%);
+            background: radial-gradient(circle at 30% 30%, #FFF6C7, #F6E27A 35%, #CFAF6E 70%, #9E793F 100%)
         }
 
         @keyframes fall {
             0% {
                 transform: translateY(0) scale(1);
-                opacity: 0.95;
+                opacity: .95
             }
 
             90% {
-                opacity: 0.90;
+                opacity: .9
             }
 
             100% {
-                transform: translateY(90px) scale(0.9);
-                opacity: 0;
+                transform: translateY(90px) scale(.9);
+                opacity: 0
             }
         }
 
         /* ===== Conteúdo ===== */
         .inner {
-            padding: clamp(18px, 3vw, 32px);
+            padding: clamp(18px, 3vw, 32px)
         }
 
         .names {
             font-family: "Great Vibes", "Parisienne", "Cormorant Garamond", Georgia, serif;
             font-size: clamp(36px, 6vw, 62px);
             text-align: center;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
             color: #3f3135;
-            margin: 6px 0 10px;
+            margin: 6px 0 10px
         }
 
         .amp {
             color: var(--accent-2);
-            padding: 0 0.25ch;
+            padding: 0 .25ch
         }
 
         .subtitle {
             text-align: center;
             color: var(--sub);
             font-size: 1.05rem;
-            margin: 0 0 18px;
+            margin: 0 0 18px
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
-            align-items: start;
+            align-items: start
         }
 
-        @media (min-width: 840px) {
+        @media (min-width:840px) {
             .grid {
-                grid-template-columns: 1.05fr 0.95fr;
-                gap: 28px;
+                grid-template-columns: 1.05fr .95fr;
+                gap: 28px
             }
         }
 
@@ -223,12 +209,12 @@
             background: #fff;
             border: 1px solid #f1e7ed;
             border-radius: 22px;
-            padding: 18px 18px 16px;
+            padding: 18px 18px 16px
         }
 
         /* ===== Calendário ===== */
         .calendar {
-            --cell: 44px;
+            --cell: 44px
         }
 
         .cal-head {
@@ -236,19 +222,19 @@
             justify-content: space-between;
             align-items: center;
             margin: 6px 6px 14px;
-            color: var(--sub);
+            color: var(--sub)
         }
 
         .cal-title {
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px
         }
 
         .cal-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 8px;
-            padding: 6px;
+            padding: 6px
         }
 
         .dow,
@@ -257,23 +243,23 @@
             display: grid;
             place-items: center;
             border-radius: 12px;
-            font-size: 0.95rem;
+            font-size: .95rem
         }
 
         .dow {
             color: #9a8890;
-            font-weight: 600;
+            font-weight: 600
         }
 
         .day {
             border: 1px solid #f1e7ed;
             color: #5a4950;
-            background: #fff;
+            background: #fff
         }
 
         .day.muted {
             color: #b7a8ae;
-            background: #faf7f8;
+            background: #faf7f8
         }
 
         .day.marked {
@@ -281,7 +267,7 @@
             font-weight: 700;
             background: linear-gradient(180deg, var(--highlight), #9c5f78);
             border-color: #9c5f78;
-            box-shadow: 0 6px 18px rgba(155, 96, 120, 0.25);
+            box-shadow: 0 6px 18px rgba(155, 96, 120, .25)
         }
 
         .legend {
@@ -290,7 +276,7 @@
             align-items: center;
             margin: 10px 6px 0;
             color: var(--sub);
-            font-size: 0.9rem;
+            font-size: .9rem
         }
 
         .dot {
@@ -298,7 +284,7 @@
             height: 12px;
             border-radius: 50%;
             background: var(--highlight);
-            box-shadow: 0 0 0 3px #f7e8ef inset;
+            box-shadow: 0 0 0 3px #f7e8ef inset
         }
 
         /* ===== Mensagem ===== */
@@ -311,27 +297,26 @@
             font-size: 1.05rem;
             line-height: 1.6;
             color: #59444b;
-            position: relative;
+            position: relative
         }
 
-        /* Removido o ornamento de aspa que criava a "marquinha" na mensagem */
         blockquote.message::before {
-            content: none;
+            content: none
         }
 
         .details {
             display: grid;
             gap: 14px;
-            padding: 8px 10px 4px;
+            padding: 8px 10px 4px
         }
 
         .date-line {
             font-size: 1.05rem;
-            color: #3f3135;
+            color: #3f3135
         }
 
         .strong {
-            font-weight: 700;
+            font-weight: 700
         }
 
         /* ===== Botões ===== */
@@ -339,7 +324,7 @@
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 8px
         }
 
         .btn {
@@ -350,45 +335,45 @@
             border-radius: 14px;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.25s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            transition: .25s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .04)
         }
 
         .btn:hover {
             background: #fff2f7;
-            transform: translateY(-1px);
+            transform: translateY(-1px)
         }
 
         .btn-primary {
             background: linear-gradient(180deg, var(--accent), #d7a6bd);
             color: #3b2c31;
             border-color: #d7a6bd;
-            box-shadow: 0 8px 18px rgba(181, 122, 147, 0.28);
+            box-shadow: 0 8px 18px rgba(181, 122, 147, .28)
         }
 
         .btn-primary:hover {
-            filter: brightness(1.05);
+            filter: brightness(1.05)
         }
 
         .btn-primary:active {
             transform: translateY(0);
-            filter: brightness(0.98);
+            filter: brightness(.98)
         }
 
         .btn-primary:focus {
             outline: 2px solid #f0d9e4;
-            outline-offset: 2px;
+            outline-offset: 2px
         }
 
         .note {
             margin-top: 16px;
-            font-size: 0.95rem;
+            font-size: .95rem;
             color: #7a666c;
             background: #fff;
             border: 1px dashed #e5cddb;
             padding: 12px 14px;
             border-radius: 14px;
-            text-align: center;
+            text-align: center
         }
 
         /* ===== Ornamento ===== */
@@ -397,50 +382,62 @@
             right: 8px;
             top: 8px;
             width: min(200px, 32vw);
-            opacity: 0.18;
-            pointer-events: none;
+            opacity: .18;
+            pointer-events: none
         }
 
-        /* ===== Fallback de visibilidade do título ===== */
+        /* ===== Fallback visibilidade do título ===== */
         .show-now {
             stroke-dasharray: none !important;
             stroke-dashoffset: 0 !important;
-            fill-opacity: 1 !important;
+            fill-opacity: 1 !important
         }
 
         /* ===== Mobile ===== */
-        @media (max-width: 600px) {
+        @media (max-width:600px) {
             .hero {
-                aspect-ratio: 4/5;
+                aspect-ratio: 4/5
             }
 
             .calendar {
-                --cell: 34px;
+                --cell: 34px
             }
 
             .btn {
                 width: 100%;
-                text-align: center;
+                text-align: center
             }
 
             .inner {
-                padding: 14px;
+                padding: 14px
+            }
+
+            /* Título grande no mobile */
+            .script {
+                width: 100%;
+                inset: auto 0 6% 0;
+                transform: scale(1.35);
+                transform-origin: center bottom
+            }
+
+            .script text {
+                font-size: 240px
             }
         }
 
         /* ===== Impressão ===== */
         @media print {
             body {
-                background: #fff;
+                background: #fff
             }
 
             .card {
                 box-shadow: none;
-                border: 1px solid #eee;
+                border: 1px solid #eee
             }
 
             .actions {
-                display: none;
+                display: none
             }
         }
     </style>
@@ -450,12 +447,10 @@
     <div class="wrap">
         <main class="card" role="main" aria-label="Save the Date do casamento de Gislaine e Wandson">
             <header class="hero" aria-label="Foto dos noivos">
-                <!-- 🖼️ Trocar pelo arquivo real -->
                 <img src="img/eles2.png" alt="Gislaine e Wandson — ensaio fotográfico dos noivos" />
                 <div class="veil"></div>
                 <div class="sparkles" aria-hidden="true"></div>
-
-                <!-- SVG animado: escrita dourada "Save the Date" -->
+                <!-- Título "Save the Date" -->
                 <svg class="script" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                     <defs>
                         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -474,7 +469,7 @@
                         </filter>
                     </defs>
                     <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle"
-                        style="font-family: 'Great Vibes','Parisienne',serif;">Save the Date</text>
+                        style="font-family:'Great Vibes','Parisienne',serif">Save the Date</text>
                 </svg>
             </header>
 
@@ -485,33 +480,23 @@
                 <div class="grid">
                     <!-- Calendário -->
                     <aside class="pane calendar" aria-label="Calendário com a data marcada">
-                        <div class="cal-head">
-                            <span class="cal-title" id="calTitle">Abril de 2026</span>
-                        </div>
+                        <div class="cal-head"><span class="cal-title" id="calTitle">Abril de 2026</span></div>
                         <div class="cal-grid" id="calGrid" aria-labelledby="calTitle" role="group"></div>
-                        <div class="legend">
-                            <span class="dot" aria-hidden="true"></span>
-                            <span>Data do casamento</span>
+                        <div class="legend"><span class="dot" aria-hidden="true"></span> <span>Data do casamento</span>
                         </div>
                     </aside>
 
                     <!-- Mensagem e detalhes -->
                     <section class="pane">
-                        <blockquote class="message">
-                            Que este seja o primeiro capítulo de uma vida inteira de sonhos, fé e cumplicidade. Ter você
-                            conosco tornará tudo ainda mais especial.
-                        </blockquote>
-
+                        <blockquote class="message">Que este seja o primeiro capítulo de uma vida inteira de sonhos, fé
+                            e cumplicidade. Ter você conosco tornará tudo ainda mais especial.</blockquote>
                         <div class="details">
-                            <div class="date-line" id="dateLine">
-                                <span class="strong">10 de abril de 2026</span> — sexta‑feira
-                            </div>
-                            <div class="actions">
-                                <button class="btn btn-primary" id="btnICS"
+                            <div class="date-line" id="dateLine"><span class="strong">10 de abril de 2026</span> —
+                                sexta‑feira</div>
+                            <div class="actions"><button class="btn btn-primary" id="btnICS"
                                     aria-label="Salvar evento no seu calendário">📅 Salvar no meu calendário</button>
                             </div>
                         </div>
-
                         <p class="note">Observação: o convite oficial será enviado em breve. 💌</p>
                     </section>
                 </div>
@@ -519,7 +504,7 @@
         </main>
     </div>
 
-    <!-- Ornamento SVG leve -->
+    <!-- Ornamento -->
     <svg class="leafy" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g fill="none" stroke="var(--green)" stroke-width="2">
             <path d="M10 100 C 30 40, 60 20, 100 20 C 140 20, 170 40, 190 100" opacity=".8" />
@@ -529,48 +514,23 @@
     </svg>
 
     <script>
-        // =========================
-        // Configurações do evento
-        // =========================
+        // ========= Config =========
         const event = {
             title: "Casamento — Gislaine & Wandson",
-            date: new Date(2026, 3, 10), // 10/04/2026
+            date: new Date(2026, 3, 10),
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Cuiaba'
         };
 
-        // =========================
-        // Calendário
-        // =========================
+        // ========= Calendário =========
         function renderCalendar(targetDate) {
-            const y = targetDate.getFullYear();
-            const m = targetDate.getMonth();
-            const first = new Date(y, m, 1);
-            const last = new Date(y, m + 1, 0);
-
-            const grid = document.getElementById('calGrid');
-            grid.innerHTML = '';
-
+            const y = targetDate.getFullYear(), m = targetDate.getMonth();
+            const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
+            const grid = document.getElementById('calGrid'); grid.innerHTML = '';
             const monthsPT = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
             const dows = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
             document.getElementById('calTitle').textContent = `${monthsPT[m][0].toUpperCase() + monthsPT[m].slice(1)} de ${y}`;
-
-            // Cabeçalho
-            dows.forEach((d) => {
-                const el = document.createElement('div');
-                el.className = 'dow';
-                el.textContent = d;
-                grid.appendChild(el);
-            });
-
-            // Espaços até o primeiro dia (domingo = 0)
-            const startOffset = first.getDay();
-            for (let i = 0; i < startOffset; i++) {
-                const blank = document.createElement('div');
-                blank.className = 'day muted';
-                grid.appendChild(blank);
-            }
-
-            // Dias do mês
+            dows.forEach(d => { const el = document.createElement('div'); el.className = 'dow'; el.textContent = d; grid.appendChild(el); });
+            for (let i = 0; i < first.getDay(); i++) { const blank = document.createElement('div'); blank.className = 'day muted'; grid.appendChild(blank); }
             const markedDay = targetDate.getDate();
             for (let day = 1; day <= last.getDate(); day++) {
                 const d = document.createElement('div');
@@ -581,9 +541,7 @@
             }
         }
 
-        // =========================
-        // Data por extenso
-        // =========================
+        // ========= Data por extenso =========
         function updateDateLine(dt) {
             const fmt = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
             const parts = fmt.formatToParts(dt).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
@@ -591,12 +549,10 @@
             document.getElementById('dateLine').innerHTML = `<span class="strong">${line}</span>`;
         }
 
-        // =========================
-        // Arquivo ICS (evento dia inteiro)
-        // =========================
+        // ========= ICS =========
         function buildICSString(start, end, title) {
-            const pad = (n) => String(n).padStart(2, '0');
-            const toICSDateVALUE = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+            const pad = n => String(n).padStart(2, '0');
+            const toICSDateVALUE = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
             const dtstamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
             return [
                 'BEGIN:VCALENDAR',
@@ -610,15 +566,15 @@
                 `DTSTART;VALUE=DATE:${toICSDateVALUE(start)}`,
                 `DTEND;VALUE=DATE:${toICSDateVALUE(end)}`,
                 `SUMMARY:${title}`,
-                'DESCRIPTION:Reserve esta data com carinho. ♥',
+                'DESCRIPTION:Reserve esta data com carinho.',
                 'END:VEVENT',
                 'END:VCALENDAR'
-            ].join('\r\n'); // CRLF para compatibilidade máxima
+            ].join('\r\n'); // << corrigido
         }
 
         function downloadICS() {
             const start = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
-            const end = new Date(start.getTime() + 24 * 60 * 60 * 1000); // +1 dia
+            const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
             const ics = buildICSString(start, end, event.title);
             const blob = new Blob([ics], { type: 'text/calendar' });
             const a = document.createElement('a');
@@ -630,45 +586,12 @@
             a.remove();
         }
 
-        // =========================
-        // Testes (console)
-        // =========================
-        function runTests() {
-            try {
-                const title = document.getElementById('calTitle').textContent.trim();
-                console.assert(title.includes('Abril de 2026'), 'CalTitle deveria conter "Abril de 2026". Obtido:', title);
-
-                const marked = Array.from(document.querySelectorAll('.day.marked')).map((el) => el.textContent.trim());
-                console.assert(marked.includes('10'), 'Deveria haver um dia 10 marcado. Marcados:', marked);
-
-                const s = new Date(2026, 3, 10);
-                const e = new Date(2026, 3, 11);
-                const ics = buildICSString(s, e, 'Teste ICS');
-                console.assert(ics.startsWith('BEGIN:VCALENDAR'), 'ICS deve começar com BEGIN:VCALENDAR');
-                console.assert(ics.includes('\r\n'), 'ICS deve usar CRLF (\\r\\n)');
-                console.assert(/DTSTART;VALUE=DATE:20260410/.test(ics), 'DTSTART correto 20260410');
-                console.assert(/DTEND;VALUE=DATE:20260411/.test(ics), 'DTEND correto 20260411');
-
-                // Teste extra: sem selo/label duplicado
-                console.assert(!document.querySelector('.hero-badge'), 'Não deve existir ".hero-badge" no DOM.');
-
-                // Teste extra: texto SVG visível
-                const txt = document.querySelector('.script text');
-                const rect = txt.getBoundingClientRect();
-                console.assert(rect.width > 20 && rect.height > 20, 'Texto do SVG deve ser visível. Rect:', rect);
-            } catch (err) {
-                console.error('[TEST] Falha nos testes:', err);
-            }
-        }
-
-        // =========================
-        // Inicialização
-        // =========================
+        // ========= Inicialização =========
         renderCalendar(event.date);
         updateDateLine(event.date);
         document.getElementById('btnICS').addEventListener('click', downloadICS);
 
-        // Calibra o comprimento do traço do texto; se falhar, mostra o texto preenchido (fallback)
+        // Calibra o traço do título; fallback mostra preenchido
         (function calibrateDash() {
             const txt = document.querySelector('.script text');
             if (!txt) return;
@@ -680,17 +603,16 @@
             });
         })();
 
-        // Partículas sincronizadas com a escrita
+        // Partículas sincronizadas
         (function goldParticles() {
             const layer = document.querySelector('.sparkles');
             const textEl = document.querySelector('.script text');
             if (!layer || !textEl) return;
 
-            // Duração real da 1ª animação (draw)
             const animDur = getComputedStyle(textEl).animationDuration.split(',')[0].trim();
             const DRAW_MS = /ms$/i.test(animDur) ? parseFloat(animDur) : parseFloat(animDur) * 1000 || 8000;
 
-            const emitEvery = 40; // ms
+            const emitEvery = 40;
             const startT = performance.now();
             let last = startT;
 
@@ -698,9 +620,8 @@
                 const textRect = textEl.getBoundingClientRect();
                 const layerRect = layer.getBoundingClientRect();
                 const xAbs = textRect.left + textRect.width * (0.06 + 0.88 * progress);
-                const yAbs = textRect.top + textRect.height * 0.62; // linha média
-                let x = xAbs - layerRect.left;
-                let y = yAbs - layerRect.top;
+                const yAbs = textRect.top + textRect.height * 0.62;
+                let x = xAbs - layerRect.left, y = yAbs - layerRect.top;
                 x = Math.max(0, Math.min(layerRect.width - 1, x));
                 y = Math.max(0, Math.min(layerRect.height - 1, y));
 
@@ -711,8 +632,7 @@
                     const size = 3 + Math.random() * 5;
                     p.style.width = size + 'px';
                     p.style.height = size + 'px';
-                    const jx = (Math.random() - 0.5) * 22;
-                    const jy = (Math.random() - 0.5) * 10;
+                    const jx = (Math.random() - .5) * 22, jy = (Math.random() - .5) * 10;
                     p.style.left = (x + jx) + 'px';
                     p.style.top = (y + jy) + 'px';
                     p.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';
@@ -731,9 +651,30 @@
             requestAnimationFrame(tick);
         })();
 
-        // Executa testes após render
-        window.requestAnimationFrame(runTests);
+        // ========= Testes (console) =========
+        (function runTests() {
+            try {
+                const title = document.getElementById('calTitle').textContent.trim();
+                console.assert(title.includes('Abril de 2026'), 'Título do calendário');
+
+                const marked = [...document.querySelectorAll('.day.marked')].map(el => el.textContent.trim());
+                console.assert(marked.includes('10'), 'Dia 10 marcado');
+
+                const s = new Date(2026, 3, 10), e = new Date(2026, 3, 11);
+                const ics = buildICSString(s, e, 'Teste ICS');
+                console.assert(ics.startsWith('BEGIN:VCALENDAR'), 'ICS start');
+                console.assert(ics.includes('\r\n'), 'ICS CRLF'); // << corrigido
+                console.assert(/DTSTART;VALUE=DATE:20260410/.test(ics), 'DTSTART 20260410');
+                console.assert(/DTEND;VALUE=DATE:20260411/.test(ics), 'DTEND 20260411');
+
+                const txt = document.querySelector('.script text');
+                const rect = txt.getBoundingClientRect();
+                console.assert(rect.width > 20 && rect.height > 20, 'SVG visível');
+            } catch (e) { console.error('[TEST]', e); }
+        })();
     </script>
+
+
 </body>
 
 </html>
