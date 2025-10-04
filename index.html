@@ -7,7 +7,7 @@
     <title>Save the Date — Gislaine & Wandson</title>
     <meta name="description" content="Save the Date do casamento de Gislaine & Wandson — 10 de abril de 2026." />
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
     <style>
         :root {
             --bg: #fff9fb;
@@ -29,18 +29,21 @@
         }
 
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
         html,
         body {
-            height: 100%
+            height: 100%;
+            overflow-x: hidden;
+            /* evita rolagem lateral em telas pequenas */
         }
 
         body {
             margin: 0;
             font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-            background: radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%),
+            background:
+                radial-gradient(1200px 600px at 80% -10%, #ffeef6 0%, var(--bg) 60%),
                 radial-gradient(1200px 600px at 10% 110%, #eef7f2 0%, var(--bg) 60%);
             color: var(--ink);
         }
@@ -49,20 +52,20 @@
             display: grid;
             place-items: center;
             min-height: 100%;
-            padding: 24px
+            padding: 24px;
         }
 
         .card {
             width: min(920px, 100%);
             background: var(--card);
             border-radius: 28px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             border: 1px solid #f3e6ec;
             position: relative;
         }
 
-        /* Header com foto */
+        /* ===== Header com foto ===== */
         .hero {
             position: relative;
             aspect-ratio: 16/7;
@@ -76,89 +79,80 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: contrast(1.02) saturate(1.02) brightness(.98);
-            opacity: .92;
+            filter: contrast(1.02) saturate(1.02) brightness(0.98);
+            opacity: 0.92;
         }
 
         .veil {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, .65));
-            z-index: 1
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.65));
+            z-index: 1;
         }
 
-        .hero-badge {
+        .sparkles {
             position: absolute;
-            bottom: 14px;
-            left: 14px;
-            background: rgba(255, 255, 255, .72);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 0, 0, .06);
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: .9rem;
-            color: var(--sub);
-            z-index: 3
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* Título animado "Save the Date" */
+        /* ===== Título animado "Save the Date" ===== */
         .script {
             position: absolute;
             inset: auto 0 8% 0;
             margin: auto;
             width: min(92%, 820px);
             height: auto;
-            z-index: 2;
-            pointer-events: none
+            z-index: 4;
+            pointer-events: none;
         }
 
         .script text {
             fill: url(#goldGrad);
             fill-opacity: 0;
             stroke: url(#goldGrad);
-            stroke-width: 3.2;
+            stroke-width: 4.2;
             stroke-linecap: round;
             stroke-linejoin: round;
             paint-order: stroke fill;
             filter: url(#goldGlow);
-            stroke-dasharray: 1400;
-            stroke-dashoffset: 1400;
+            /* comprimento do traço ajustado via --dash (fallback 1400) */
+            stroke-dasharray: var(--dash, 1400);
+            stroke-dashoffset: var(--dash, 1400);
+            /* 1) desenha  2) preenche */
             animation: draw 8s ease forwards, fillIn 1.5s ease 8s forwards;
+            /* destaque e responsividade */
+            font-size: clamp(72px, 15vw, 220px);
+            text-rendering: optimizeLegibility;
         }
 
         @keyframes draw {
             to {
-                stroke-dashoffset: 0
+                stroke-dashoffset: 0;
             }
         }
 
         @keyframes fillIn {
             from {
-                fill-opacity: 0
+                fill-opacity: 0;
             }
 
             to {
-                fill-opacity: 1
+                fill-opacity: 1;
             }
         }
 
-        /* Partículas douradas caindo */
-        .sparkles {
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            pointer-events: none;
-            overflow: hidden
-        }
-
+        /* ===== Partículas douradas ===== */
         .particle {
             position: absolute;
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            opacity: .95;
-            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .2));
-            animation: fall 2.2s ease-in forwards
+            opacity: 0.95;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+            animation: fall 2.2s ease-in forwards;
         }
 
         .particle::before {
@@ -172,43 +166,43 @@
         @keyframes fall {
             0% {
                 transform: translateY(0) scale(1);
-                opacity: .95
+                opacity: 0.95;
             }
 
             90% {
-                opacity: .9
+                opacity: 0.90;
             }
 
             100% {
-                transform: translateY(90px) scale(.9);
-                opacity: 0
+                transform: translateY(90px) scale(0.9);
+                opacity: 0;
             }
         }
 
-        /* Conteúdo */
+        /* ===== Conteúdo ===== */
         .inner {
-            padding: clamp(18px, 3vw, 32px)
+            padding: clamp(18px, 3vw, 32px);
         }
 
         .names {
             font-family: "Great Vibes", "Parisienne", "Cormorant Garamond", Georgia, serif;
             font-size: clamp(36px, 6vw, 62px);
             text-align: center;
-            letter-spacing: .5px;
+            letter-spacing: 0.5px;
             color: #3f3135;
             margin: 6px 0 10px;
         }
 
         .amp {
             color: var(--accent-2);
-            padding: 0 .25ch
+            padding: 0 0.25ch;
         }
 
         .subtitle {
             text-align: center;
             color: var(--sub);
             font-size: 1.05rem;
-            margin: 0 0 18px
+            margin: 0 0 18px;
         }
 
         .grid {
@@ -220,8 +214,8 @@
 
         @media (min-width: 840px) {
             .grid {
-                grid-template-columns: 1.05fr .95fr;
-                gap: 28px
+                grid-template-columns: 1.05fr 0.95fr;
+                gap: 28px;
             }
         }
 
@@ -232,10 +226,9 @@
             padding: 18px 18px 16px;
         }
 
-        /* Calendário */
+        /* ===== Calendário ===== */
         .calendar {
             --cell: 44px;
-            --radius: 14px;
         }
 
         .cal-head {
@@ -243,12 +236,12 @@
             justify-content: space-between;
             align-items: center;
             margin: 6px 6px 14px;
-            color: var(--sub)
+            color: var(--sub);
         }
 
         .cal-title {
             font-weight: 600;
-            letter-spacing: .5px
+            letter-spacing: 0.5px;
         }
 
         .cal-grid {
@@ -264,32 +257,31 @@
             display: grid;
             place-items: center;
             border-radius: 12px;
-            font-size: .95rem
+            font-size: 0.95rem;
         }
 
         .dow {
             color: #9a8890;
-            font-weight: 600
+            font-weight: 600;
         }
 
         .day {
             border: 1px solid #f1e7ed;
             color: #5a4950;
-            background: #fff
+            background: #fff;
         }
 
         .day.muted {
             color: #b7a8ae;
-            background: #faf7f8
+            background: #faf7f8;
         }
 
         .day.marked {
-            position: relative;
-            font-weight: 700;
             color: #fff;
+            font-weight: 700;
             background: linear-gradient(180deg, var(--highlight), #9c5f78);
             border-color: #9c5f78;
-            box-shadow: 0 6px 18px rgba(155, 96, 120, .25)
+            box-shadow: 0 6px 18px rgba(155, 96, 120, 0.25);
         }
 
         .legend {
@@ -298,7 +290,7 @@
             align-items: center;
             margin: 10px 6px 0;
             color: var(--sub);
-            font-size: .9rem
+            font-size: 0.9rem;
         }
 
         .dot {
@@ -306,10 +298,10 @@
             height: 12px;
             border-radius: 50%;
             background: var(--highlight);
-            box-shadow: 0 0 0 3px #f7e8ef inset
+            box-shadow: 0 0 0 3px #f7e8ef inset;
         }
 
-        /* Mensagem */
+        /* ===== Mensagem ===== */
         blockquote.message {
             margin: 0;
             padding: 18px 18px 16px;
@@ -319,41 +311,35 @@
             font-size: 1.05rem;
             line-height: 1.6;
             color: #59444b;
-            position: relative
+            position: relative;
         }
 
-        blockquote.message:before {
-            content: "\201C";
-            position: absolute;
-            top: -18px;
-            left: -6px;
-            font-size: 60px;
-            color: #e5cad6;
-            opacity: .6
+        /* Removido o ornamento de aspa que criava a "marquinha" na mensagem */
+        blockquote.message::before {
+            content: none;
         }
 
-        /* Informações da data */
         .details {
             display: grid;
             gap: 14px;
-            padding: 8px 10px 4px
+            padding: 8px 10px 4px;
         }
 
         .date-line {
             font-size: 1.05rem;
-            color: #3f3135
+            color: #3f3135;
         }
 
         .strong {
-            font-weight: 700
+            font-weight: 700;
         }
 
-        /* Botões */
+        /* ===== Botões ===== */
         .actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-top: 8px
+            margin-top: 8px;
         }
 
         .btn {
@@ -364,58 +350,65 @@
             border-radius: 14px;
             cursor: pointer;
             font-weight: 600;
-            transition: .25s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .04)
+            transition: 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
         }
 
         .btn:hover {
             background: #fff2f7;
-            transform: translateY(-1px)
+            transform: translateY(-1px);
         }
 
         .btn-primary {
             background: linear-gradient(180deg, var(--accent), #d7a6bd);
             color: #3b2c31;
             border-color: #d7a6bd;
-            box-shadow: 0 8px 18px rgba(181, 122, 147, .28)
+            box-shadow: 0 8px 18px rgba(181, 122, 147, 0.28);
         }
 
         .btn-primary:hover {
-            filter: brightness(1.05)
+            filter: brightness(1.05);
         }
 
         .btn-primary:active {
             transform: translateY(0);
-            filter: brightness(.98)
+            filter: brightness(0.98);
         }
 
         .btn-primary:focus {
             outline: 2px solid #f0d9e4;
-            outline-offset: 2px
+            outline-offset: 2px;
         }
 
-        /* Rodapé */
         .note {
             margin-top: 16px;
-            font-size: .95rem;
+            font-size: 0.95rem;
             color: #7a666c;
             background: #fff;
             border: 1px dashed #e5cddb;
             padding: 12px 14px;
             border-radius: 14px;
-            text-align: center
+            text-align: center;
         }
 
-        /* Ornamentos simples */
+        /* ===== Ornamento ===== */
         .leafy {
             position: absolute;
-            inset: -20px -16px auto auto;
-            width: min(220px, 35vw);
-            opacity: .18;
-            pointer-events: none
+            right: 8px;
+            top: 8px;
+            width: min(200px, 32vw);
+            opacity: 0.18;
+            pointer-events: none;
         }
 
-        /* Ajustes responsivos (mobile-first) */
+        /* ===== Fallback de visibilidade do título ===== */
+        .show-now {
+            stroke-dasharray: none !important;
+            stroke-dashoffset: 0 !important;
+            fill-opacity: 1 !important;
+        }
+
+        /* ===== Mobile ===== */
         @media (max-width: 600px) {
             .hero {
                 aspect-ratio: 4/5;
@@ -435,20 +428,19 @@
             }
         }
 
-        /* Impressão */
+        /* ===== Impressão ===== */
         @media print {
             body {
-                background: #fff
+                background: #fff;
             }
 
             .card {
                 box-shadow: none;
-                border: 1px solid #eee
+                border: 1px solid #eee;
             }
 
-            .hero-badge,
             .actions {
-                display: none
+                display: none;
             }
         }
     </style>
@@ -458,13 +450,13 @@
     <div class="wrap">
         <main class="card" role="main" aria-label="Save the Date do casamento de Gislaine e Wandson">
             <header class="hero" aria-label="Foto dos noivos">
-                <!-- 🖼️ Substitua o src abaixo pela foto real dos noivos (recomendado 1600x700px ou maior) -->
-                <img src="img/eles2.png"
-                    alt="Gislaine e Wandson — ensaio fotográfico dos noivos" />
+                <!-- 🖼️ Trocar pelo arquivo real -->
+                <img src="img/eles2.png" alt="Gislaine e Wandson — ensaio fotográfico dos noivos" />
                 <div class="veil"></div>
                 <div class="sparkles" aria-hidden="true"></div>
+
                 <!-- SVG animado: escrita dourada "Save the Date" -->
-                <svg class="script" viewBox="0 0 1200 300" aria-hidden="true">
+                <svg class="script" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                     <defs>
                         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#CFAF6E" />
@@ -482,9 +474,8 @@
                         </filter>
                     </defs>
                     <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle"
-                        style="font-family:'Great Vibes', 'Parisienne', serif; font-size:150px;">Save the Date</text>
+                        style="font-family: 'Great Vibes','Parisienne',serif;">Save the Date</text>
                 </svg>
-                <div class="hero-badge">Save the Date</div>
             </header>
 
             <section class="inner">
@@ -498,7 +489,9 @@
                             <span class="cal-title" id="calTitle">Abril de 2026</span>
                         </div>
                         <div class="cal-grid" id="calGrid" aria-labelledby="calTitle" role="group"></div>
-                        <div class="legend"><span class="dot" aria-hidden="true"></span> <span>Data do casamento</span>
+                        <div class="legend">
+                            <span class="dot" aria-hidden="true"></span>
+                            <span>Data do casamento</span>
                         </div>
                     </aside>
 
@@ -510,8 +503,9 @@
                         </blockquote>
 
                         <div class="details">
-                            <div class="date-line" id="dateLine"><span class="strong">10 de abril de 2026</span> —
-                                sexta‑feira</div>
+                            <div class="date-line" id="dateLine">
+                                <span class="strong">10 de abril de 2026</span> — sexta‑feira
+                            </div>
                             <div class="actions">
                                 <button class="btn btn-primary" id="btnICS"
                                     aria-label="Salvar evento no seu calendário">📅 Salvar no meu calendário</button>
@@ -540,13 +534,12 @@
         // =========================
         const event = {
             title: "Casamento — Gislaine & Wandson",
-            // Evento de dia inteiro (sem horário definido)
             date: new Date(2026, 3, 10), // 10/04/2026
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Cuiaba'
         };
 
         // =========================
-        // Render do calendário
+        // Calendário
         // =========================
         function renderCalendar(targetDate) {
             const y = targetDate.getFullYear();
@@ -558,21 +551,26 @@
             grid.innerHTML = '';
 
             const monthsPT = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-            const dows = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']; // dom → sáb
+            const dows = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
             document.getElementById('calTitle').textContent = `${monthsPT[m][0].toUpperCase() + monthsPT[m].slice(1)} de ${y}`;
 
-            // Cabeçalho dias da semana
-            dows.forEach(d => {
-                const el = document.createElement('div'); el.className = 'dow'; el.textContent = d; grid.appendChild(el);
+            // Cabeçalho
+            dows.forEach((d) => {
+                const el = document.createElement('div');
+                el.className = 'dow';
+                el.textContent = d;
+                grid.appendChild(el);
             });
 
-            // espaço em branco até o 1º dia (começa no domingo)
+            // Espaços até o primeiro dia (domingo = 0)
             const startOffset = first.getDay();
             for (let i = 0; i < startOffset; i++) {
-                const blank = document.createElement('div'); blank.className = 'day muted'; grid.appendChild(blank);
+                const blank = document.createElement('div');
+                blank.className = 'day muted';
+                grid.appendChild(blank);
             }
 
-            // dias do mês
+            // Dias do mês
             const markedDay = targetDate.getDate();
             for (let day = 1; day <= last.getDate(); day++) {
                 const d = document.createElement('div');
@@ -584,22 +582,21 @@
         }
 
         // =========================
-        // Texto da data (10 de abril de 2026 — sexta‑feira)
+        // Data por extenso
         // =========================
         function updateDateLine(dt) {
             const fmt = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
-            const parts = fmt.formatToParts(dt).reduce((acc, p) => { acc[p.type] = p.value; return acc }, {});
-            const day = parts.day; const month = parts.month; const year = parts.year; const weekday = parts.weekday;
-            const line = `${Number(day)} de ${month} de ${year} — ${weekday}`;
+            const parts = fmt.formatToParts(dt).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
+            const line = `${Number(parts.day)} de ${parts.month} de ${parts.year} — ${parts.weekday}`;
             document.getElementById('dateLine').innerHTML = `<span class="strong">${line}</span>`;
         }
 
         // =========================
-        // Helper: montar string ICS (linha por linha)
+        // Arquivo ICS (evento dia inteiro)
         // =========================
         function buildICSString(start, end, title) {
-            const pad = n => String(n).padStart(2, '0');
-            const toICSDateVALUE = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`; // VALUE=DATE
+            const pad = (n) => String(n).padStart(2, '0');
+            const toICSDateVALUE = (d) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
             const dtstamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
             return [
                 'BEGIN:VCALENDAR',
@@ -616,12 +613,9 @@
                 'DESCRIPTION:Reserve esta data com carinho. ♥',
                 'END:VEVENT',
                 'END:VCALENDAR'
-            ].join('\r\n'); // CRLF para máxima compatibilidade
+            ].join('\r\n'); // CRLF para compatibilidade máxima
         }
 
-        // =========================
-        // Gerar arquivo .ics (Adicionar ao calendário) — ALL-DAY
-        // =========================
         function downloadICS() {
             const start = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate());
             const end = new Date(start.getTime() + 24 * 60 * 60 * 1000); // +1 dia
@@ -637,86 +631,107 @@
         }
 
         // =========================
-        // TESTES AUTOMÁTICOS (debug) — ver no console do navegador
+        // Testes (console)
         // =========================
         function runTests() {
             try {
-                console.info('%c[TEST] Iniciando testes do Save the Date…', 'color:#6b4e59');
-                // Teste 1: título do mês
                 const title = document.getElementById('calTitle').textContent.trim();
                 console.assert(title.includes('Abril de 2026'), 'CalTitle deveria conter "Abril de 2026". Obtido:', title);
 
-                // Teste 2: existe um dia marcado (10)
-                const marked = Array.from(document.querySelectorAll('.day.marked')).map(el => el.textContent.trim());
+                const marked = Array.from(document.querySelectorAll('.day.marked')).map((el) => el.textContent.trim());
                 console.assert(marked.includes('10'), 'Deveria haver um dia 10 marcado. Marcados:', marked);
 
-                // Teste 3: ICS string bem formada (sem quebras inválidas)
-                const start = new Date(2026, 3, 10);
-                const end = new Date(2026, 3, 11);
-                const ics = buildICSString(start, end, 'Teste ICS');
+                const s = new Date(2026, 3, 10);
+                const e = new Date(2026, 3, 11);
+                const ics = buildICSString(s, e, 'Teste ICS');
                 console.assert(ics.startsWith('BEGIN:VCALENDAR'), 'ICS deve começar com BEGIN:VCALENDAR');
                 console.assert(ics.includes('\r\n'), 'ICS deve usar CRLF (\\r\\n)');
                 console.assert(/DTSTART;VALUE=DATE:20260410/.test(ics), 'DTSTART correto 20260410');
                 console.assert(/DTEND;VALUE=DATE:20260411/.test(ics), 'DTEND correto 20260411');
 
-                console.info('%c[TEST] Todos os testes executados. Veja avisos acima, se houver.', 'color:#6b8f7d');
+                // Teste extra: sem selo/label duplicado
+                console.assert(!document.querySelector('.hero-badge'), 'Não deve existir ".hero-badge" no DOM.');
+
+                // Teste extra: texto SVG visível
+                const txt = document.querySelector('.script text');
+                const rect = txt.getBoundingClientRect();
+                console.assert(rect.width > 20 && rect.height > 20, 'Texto do SVG deve ser visível. Rect:', rect);
             } catch (err) {
                 console.error('[TEST] Falha nos testes:', err);
             }
         }
 
+        // =========================
         // Inicialização
+        // =========================
         renderCalendar(event.date);
         updateDateLine(event.date);
         document.getElementById('btnICS').addEventListener('click', downloadICS);
 
-        // Emissor de partículas sincronizado com a escrita (aproximação)
-        (function goldParticles() {
-            const hero = document.querySelector('.hero');
-            const layer = document.querySelector('.sparkles');
-            if (!hero || !layer) return;
-            const DURATION = 8000; // ms — igual ao draw 8s
-            const start = performance.now();
-            const emitEvery = 35; // ms
-            let last = start;
+        // Calibra o comprimento do traço do texto; se falhar, mostra o texto preenchido (fallback)
+        (function calibrateDash() {
+            const txt = document.querySelector('.script text');
+            if (!txt) return;
+            requestAnimationFrame(() => {
+                let len = 1400;
+                try { if (txt.getComputedTextLength) len = Math.ceil(txt.getComputedTextLength()); } catch (e) { }
+                if (!len || !isFinite(len) || len < 50) { txt.classList.add('show-now'); len = 1400; }
+                txt.style.setProperty('--dash', (len + 100));
+            });
+        })();
 
-            function emit(x, y) {
-                const p = document.createElement('span');
-                p.className = 'particle';
-                const size = 3 + Math.random() * 5; // 3–8px
-                p.style.width = size + 'px';
-                p.style.height = size + 'px';
-                const jitterX = (Math.random() - .5) * 24; // espalha lateral
-                const jitterY = (Math.random() - .5) * 10; // pequena variação vertical
-                p.style.left = (x + jitterX) + 'px';
-                p.style.top = (y + jitterY) + 'px';
-                // variação de duração
-                const dur = 1.8 + Math.random() * 1.4;
-                p.style.animationDuration = dur + 's';
-                layer.appendChild(p);
-                p.addEventListener('animationend', () => p.remove());
+        // Partículas sincronizadas com a escrita
+        (function goldParticles() {
+            const layer = document.querySelector('.sparkles');
+            const textEl = document.querySelector('.script text');
+            if (!layer || !textEl) return;
+
+            // Duração real da 1ª animação (draw)
+            const animDur = getComputedStyle(textEl).animationDuration.split(',')[0].trim();
+            const DRAW_MS = /ms$/i.test(animDur) ? parseFloat(animDur) : parseFloat(animDur) * 1000 || 8000;
+
+            const emitEvery = 40; // ms
+            const startT = performance.now();
+            let last = startT;
+
+            function emitAt(progress) {
+                const textRect = textEl.getBoundingClientRect();
+                const layerRect = layer.getBoundingClientRect();
+                const xAbs = textRect.left + textRect.width * (0.06 + 0.88 * progress);
+                const yAbs = textRect.top + textRect.height * 0.62; // linha média
+                let x = xAbs - layerRect.left;
+                let y = yAbs - layerRect.top;
+                x = Math.max(0, Math.min(layerRect.width - 1, x));
+                y = Math.max(0, Math.min(layerRect.height - 1, y));
+
+                const particles = 1 + Math.floor(Math.random() * 3);
+                for (let i = 0; i < particles; i++) {
+                    const p = document.createElement('span');
+                    p.className = 'particle';
+                    const size = 3 + Math.random() * 5;
+                    p.style.width = size + 'px';
+                    p.style.height = size + 'px';
+                    const jx = (Math.random() - 0.5) * 22;
+                    const jy = (Math.random() - 0.5) * 10;
+                    p.style.left = (x + jx) + 'px';
+                    p.style.top = (y + jy) + 'px';
+                    p.style.animationDuration = (1.8 + Math.random() * 1.4) + 's';
+                    layer.appendChild(p);
+                    p.addEventListener('animationend', () => p.remove());
+                }
             }
 
             function tick(now) {
-                const t = now - start;
-                const progress = Math.min(1, t / DURATION);
-                // posição aproximada da escrita (linha central do texto)
-                const rect = hero.getBoundingClientRect();
-                const x = rect.width * (0.04 + 0.92 * progress);
-                const y = rect.height * 0.58; // altura média das letras
-
-                if (now - last >= emitEvery) {
-                    // emitir 1–3 partículas por intervalo, mais no meio da animação
-                    const count = 1 + Math.floor(Math.random() * (progress < .2 || progress > .9 ? 1 : 3));
-                    for (let i = 0; i < count; i++) emit(x, y);
-                    last = now;
-                }
+                const elapsed = now - startT;
+                const progress = Math.min(1, elapsed / DRAW_MS);
+                if (now - last >= emitEvery) { emitAt(progress); last = now; }
                 if (progress < 1) { requestAnimationFrame(tick); }
             }
+
             requestAnimationFrame(tick);
         })();
 
-        // Executa testes após layout pronto
+        // Executa testes após render
         window.requestAnimationFrame(runTests);
     </script>
 </body>
